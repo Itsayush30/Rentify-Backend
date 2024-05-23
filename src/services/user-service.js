@@ -76,5 +76,5 @@ class UserService {
       );
     }
   }
-} // Added closing brace for the UserService class
+} 
 module.exports = UserService;
