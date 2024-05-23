@@ -27,7 +27,33 @@ class PropertyService {
       return property;
     } catch (error) {
       throw new AppError(
-        "cannot get all properies",
+        "cannot get all properties",
+        StatusCodes.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  async getPropertyByUserId(user_id) {
+    try {
+      console.log("here");
+      const property = await this.propertyRepository.getProperty(user_id);
+      return property;
+    } catch (error) {
+      throw new AppError(
+        "cannot get property by user id",
+        StatusCodes.INTERNAL_SERVER_ERROR
+      );
+    }
+  }
+
+  async getPropertyByCity(city) {
+    try {
+      console.log("here");
+      const property = await this.propertyRepository.getProperty(city);
+      return property;
+    } catch (error) {
+      throw new AppError(
+        "cannot get property by city",
         StatusCodes.INTERNAL_SERVER_ERROR
       );
     }

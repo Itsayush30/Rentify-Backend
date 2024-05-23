@@ -38,4 +38,28 @@ const allProperty = async (req, res) => {
     }
 };
 
-module.exports = { createProperty, allProperty };
+const getPropertyByUserId = async (req, res) => {
+    try {
+        const response = await propertyService.getPropertyByUserId(req.user_id);
+        SuccessResponse.data = response;
+        return res.status(StatusCodes.CREATED).json(SuccessResponse);
+    } catch (error) {
+        console.log(error);
+        ErrorResponse.error = error;
+        return res.status(error.statusCode).json(ErrorResponse);
+    }
+};
+
+const getPropertyByCity = async (req, res) => {
+    try {
+        const response = await propertyService.getPropertyByCity(req.body.city);
+        SuccessResponse.data = response;
+        return res.status(StatusCodes.CREATED).json(SuccessResponse);
+    } catch (error) {
+        console.log(error);
+        ErrorResponse.error = error;
+        return res.status(error.statusCode).json(ErrorResponse);
+    }
+};
+
+module.exports = { createProperty, allProperty, getPropertyByUserId,getPropertyByCity };

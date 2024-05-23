@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { createProperty, allProperty } = require("../../controllers/property-controller");
+const { createProperty, allProperty, getPropertyByUserId, getPropertyByCity} = require("../../controllers/property-controller");
 
 const {
     createUser, usersignin
@@ -24,6 +24,12 @@ router.post("/createproperty", checkAuth, createProperty)
 
 // /api/v1/allproperty GET
 router.get("/allproperty", allProperty)
+
+// /api/v1/property GET
+router.get("/property",checkAuth, getPropertyByUserId)
+
+// /api/v1/city GET
+router.get("/city", getPropertyByCity)
 
 
 module.exports = router;
