@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { createProperty } = require("../../controllers/property-controller");
+const { createProperty,allProperty } = require("../../controllers/property-controller");
 
 const {
     createUser,usersignin
@@ -15,7 +15,11 @@ router.post("/user", createUser);
 // /api/v1/login POST
 router.post("/login", usersignin);
 
+// /api/v1/createproperty POST
 router.post("/createproperty",createProperty )
+
+// /api/v1/allproperty GET
+router.get("/allproperty",allProperty )
 
 
 module.exports = router;

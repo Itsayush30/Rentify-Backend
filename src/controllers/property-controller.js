@@ -14,6 +14,7 @@ const createProperty = async (req, res) => {
             apartment_type: req.body.apartment_type,
             nearby_areas: req.body.nearby_areas,
             contact_number: req.body.contact_number,
+            city: req.body.city,
         });
         SuccessResponse.data = response;
         return res.status(StatusCodes.CREATED).json(SuccessResponse);
@@ -24,5 +25,16 @@ const createProperty = async (req, res) => {
     }
 };
 
+const allProperty = async (req, res) => {
+    try {
+        const response = await propertyService.getAll();
+        SuccessResponse.data = response;
+        return res.status(StatusCodes.CREATED).json(SuccessResponse);
+    } catch (error) {
+        console.log(error);
+        ErrorResponse.error = error;
+        return res.status(error.statusCode).json(ErrorResponse);
+    }
+};
 
-module.exports = { createProperty };
+module.exports = { createProperty,allProperty };
