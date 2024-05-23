@@ -6,10 +6,22 @@ class PropertyRepository extends CrudRepository {
         super(Property);
     }
 
-    async getProperty(data) {
+    async getPropertyByCity(data) {
         try {
-          console.log("idhar",data);
+          console.log("here",data);
           const result = await Property.find({city: data});
+          console.log("result",result)
+          return result;
+        } catch (error) {
+          console.log("Something went wrong in crud repo");
+          throw error;
+        }
+      }
+
+      async getPropertyByUserId(data) {
+        try {
+          console.log("here",data);
+          const result = await Property.find({user_id: data});
           console.log("result",result)
           return result;
         } catch (error) {

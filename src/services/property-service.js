@@ -36,7 +36,7 @@ class PropertyService {
   async getPropertyByUserId(user_id) {
     try {
       console.log("here");
-      const property = await this.propertyRepository.getProperty(user_id);
+      const property = await this.propertyRepository.getPropertyByUserId(user_id);
       return property;
     } catch (error) {
       throw new AppError(
@@ -49,7 +49,7 @@ class PropertyService {
   async getPropertyByCity(city) {
     try {
       console.log("here");
-      const property = await this.propertyRepository.getProperty(city);
+      const property = await this.propertyRepository.getPropertyByCity(city);
       return property;
     } catch (error) {
       throw new AppError(
