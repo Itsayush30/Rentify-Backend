@@ -15,6 +15,7 @@ const createProperty = async (req, res) => {
             nearby_areas: req.body.nearby_areas,
             contact_number: req.body.contact_number,
             city: req.body.city,
+            user_id: req.user_id,
         });
         SuccessResponse.data = response;
         return res.status(StatusCodes.CREATED).json(SuccessResponse);
@@ -37,4 +38,4 @@ const allProperty = async (req, res) => {
     }
 };
 
-module.exports = { createProperty,allProperty };
+module.exports = { createProperty, allProperty };

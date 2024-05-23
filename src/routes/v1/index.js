@@ -1,11 +1,15 @@
 const express = require("express");
 
-const { createProperty,allProperty } = require("../../controllers/property-controller");
+const { createProperty, allProperty } = require("../../controllers/property-controller");
 
 const {
-    createUser,usersignin
+    createUser, usersignin
 } = require("../../controllers/user-controller");
 
+const {
+    validateAuthRequest,
+    checkAuth,
+} = require("../../middlewares/auth-request-middleware");
 
 const router = express.Router();
 
@@ -16,10 +20,10 @@ router.post("/user", createUser);
 router.post("/login", usersignin);
 
 // /api/v1/createproperty POST
-router.post("/createproperty",createProperty )
+router.post("/createproperty", checkAuth, createProperty)
 
 // /api/v1/allproperty GET
-router.get("/allproperty",allProperty )
+router.get("/allproperty", allProperty)
 
 
 module.exports = router;
